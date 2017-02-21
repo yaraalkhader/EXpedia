@@ -1,0 +1,3 @@
+com/hotel/management/model/Hotel.class
+com/hotel/management/mb/HotelMngView.class
+com/hotel/management/datasource/HotelMngController.class
