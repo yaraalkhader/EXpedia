@@ -75,8 +75,9 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="width: 150px;">Min Total Rate</label>
                                 <h:inputText id="minTotalRateInput" class="form-control" value="#{hotelMngView.minTotalRate}"
-                                             validatorMessage="Allowed values >= 0.0">
-                                  <f:validateDoubleRange minimum="0.0"  for="minTotalRateInput" /> </h:inputText>
+                                             validatorMessage="Allowed values >= 1">
+                                   <f:validateLongRange minimum="1" for="minTotalRateInput"  />
+                                  </h:inputText>
                                 <h:message id="m7" for="minTotalRateInput" style="color:red" /> 
                             </div>
                         </div>
@@ -84,8 +85,8 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="width: 150px;">Max Total Rate</label>
                                 <h:inputText id="maxTotalRateInput" class="form-control" value="#{hotelMngView.maxTotalRate}"
-                                             validatorMessage="Allowed values >= 0.0">
-                                 <f:validateDoubleRange minimum="0.0"  for="maxTotalRateInput" /> </h:inputText>
+                                             validatorMessage="Allowed values >= 1">
+                                   <f:validateLongRange minimum="1" for="minTotalRateInput"  /> </h:inputText>
                                 <h:message id="m8" for="maxTotalRateInput" style="color:red" /> 
                             </div>
                         </div>
@@ -130,17 +131,23 @@
                         <div class="row">
                         <div class="col-md-12 ">
                          
-                        <div class="col-md-4 ">
-                        <img src="#{hotel.hotelInfo.hotelImageUrl}" class="img-thumbnail" />
+                        <div class="col-md-3 ">
+                        <img src="#{hotel.hotelInfo.hotelImageUrl}" class="img-thumbnail" style="width: 150px;" />
                         </div>
-                        <div class="col-md-8 ">
-                         #{hotel.hotelInfo.hotelName}
-                            <label class="badge">#{hotel.hotelInfo.hotelStarRating}</label>
-                            <br/> #{hotel.hotelInfo.hotelDestination}
-                            <br/> #{hotel.hotelInfo.travelStartDate} - #{hotel.hotelInfo.travelEndDate}
-                            <br/> Price per night #{hotel.hotelPricingInfo.originalPricePerNight} Total price with Tax#{hotel.hotelPricingInfo.totalPriceValue}
+                        <div class="col-md-9 ">
+                        
+                         
+                         <h4 >#{hotel.hotelInfo.hotelName} </h4>
+                           <span class="glyphicon glyphicon-star"> </span> Star Ranking #{hotel.hotelInfo.hotelStarRating} - Guest Rating #{hotel.hotelInfo.hotelGuestReviewRating}
+                           <br/>
+                           <i class="glyphicon glyphicon-map-marker"> </i>  #{hotel.hotelInfo.hotelDestination}
                             <br/>
-                            <label class="badge"> #{hotel.hotelInfo.promotionDescription} #{hotel.hotelInfo.promotionAmount} </label>
+                            <span class="glyphicon glyphicon-calendar"> </span> #{hotel.hotelInfo.travelStartDate} - #{hotel.hotelInfo.travelEndDate}
+                            <br/> Price per night #{hotel.hotelPricingInfo.originalPricePerNight} - Total price with Tax#{hotel.hotelPricingInfo.totalPriceValue}
+                            <h:panelGroup rendered="#{hotel.hotelInfo.promotionDescription ne ''}">
+                            <br/>
+                            <label class="badge"> #{hotel.hotelInfo.promotionDescription} </label>
+                            </h:panelGroup>
                             </div>
                         </div>
                         </div>

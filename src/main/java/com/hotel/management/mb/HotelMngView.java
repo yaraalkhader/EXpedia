@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
 import com.hotel.management.datasource.HotelMngController;
@@ -33,20 +34,17 @@ public class HotelMngView {
 	
 	
 	public HotelMngView() {
-		controller = new HotelMngController();
-	}
-	public String search() {
-		System.out.println("searching");
-		List<Hotel> hotelsList = controller.searchForHotels(destinationName, minTripStartDate, maxTripStartDate, lengthOfStay, minStarRating, maxStarRating, minTotalRate, maxTotalRate, minGuestRating, maxGuestRating); 
-		if (hotelsList == null || hotelsList.isEmpty()) {
-			list = new ArrayList<Hotel>();
-			
-		} else {
-		list = hotelsList;
 		
-		}
-		//System.out.println("name = " + list[0].getName());
-		System.out.println("size = "   + list.size());
+	}
+	
+	@PostConstruct
+	public void init() {
+		System.out.println("init will be called");
+		controller = new HotelMngController(this);
+	}
+	
+	public String search() {
+		controller.updateView();		
 		return "";
 	}
 	
@@ -110,7 +108,6 @@ public class HotelMngView {
 	public void setMaxGuestRating(String maxGuestRating) {
 		this.maxGuestRating = maxGuestRating;
 	}
-	
 	
 	
 }

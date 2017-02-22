@@ -13,3 +13,4 @@ com/hotel/management/model/OfferInfo.class
 com/hotel/management/model/HotelPricingInfo.class
 com/hotel/management/model/Persona.class
 com/hotel/management/model/OfferDateRange.class
+com/hotel/management/model/DataService.class
