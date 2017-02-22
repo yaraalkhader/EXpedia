@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.bean.ManagedBean;
+
 import com.hotel.management.datasource.HotelMngController;
 import com.hotel.management.model.Hotel;
 
+@ManagedBean(name = "hotelMngView", eager = true)
 public class HotelMngView {
 	private String destinationName;
 	private Date minTripStartDate;
