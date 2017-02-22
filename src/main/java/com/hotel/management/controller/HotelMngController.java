@@ -1,12 +1,18 @@
-package com.hotel.management.datasource;
+package com.hotel.management.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import com.hotel.management.mb.HotelMngView;
 import com.hotel.management.model.DataService;
 import com.hotel.management.model.Hotel;
 
+/**
+ * @author yk
+ * 
+ */
 public class HotelMngController {
 	
 	private HotelMngView view;
@@ -15,8 +21,11 @@ public class HotelMngController {
 	public HotelMngController(HotelMngView view) {
 		this.view = view;
 		service = new DataService();
-	}
+	} 
 	
+	/**
+	 * 
+	 */
 	public void updateView() {
 		System.out.println("searching");
 		List<Hotel> hotelsList = service.findHotels(view.getDestinationName(), view.getMinTripStartDate(),
@@ -26,11 +35,23 @@ public class HotelMngController {
 			view.setList( new ArrayList<Hotel>());
 			
 		} else {
-			view.setList( hotelsList);
+			sortBySaving(hotelsList);
+			view.setList(hotelsList);
 		
 		}
 		System.out.println("size = "   + view.getList().size());
 		
 	}
 
+	private void sortBySaving(List<Hotel> hotels) {
+		Collections.sort(hotels, new Comparator<Hotel>() {
+
+			public int compare(Hotel o1, Hotel o2) {
+				
+				return o1.getHotelPricingInfo().getPercentSavings().compareTo(o2.getHotelPricingInfo().getPercentSavings()) ;
+			}
+			
+		});
+		
+	}
 }

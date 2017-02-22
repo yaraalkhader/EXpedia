@@ -1,13 +1,12 @@
 package com.hotel.management.mb;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 
-import com.hotel.management.datasource.HotelMngController;
+import com.hotel.management.controller.HotelMngController;
 import com.hotel.management.model.Hotel;
 
 @ManagedBean(name = "hotelMngView", eager = true)

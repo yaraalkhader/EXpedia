@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.Logger; 
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -84,7 +84,7 @@ public class DataService {
 		if (validateNotEmpty(minGuestRating)){
 			urlStr = urlStr + getParameter(PARAMETER_MIN_GUEST_RATING, normalize(minGuestRating.trim()));
 		}
-		
+		 
 		if (validateNotEmpty(maxGuestRating)){
 			urlStr = urlStr + getParameter(PARAMETER_MAX_GUEST_RATING, normalize(maxGuestRating.trim()));
 		}
@@ -93,7 +93,7 @@ public class DataService {
 		return jsonHandler(urlStr);
 	}
 	
-	private boolean validateNotEmpty(String value){
+	private boolean validateNotEmpty(String value) {
 		return value == null || value.isEmpty() ? false : true;
 	}
 	
