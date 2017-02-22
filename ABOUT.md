@@ -15,3 +15,5 @@ The list of pojos used in the code has been generated using http://www.jsonschem
 
 A couple of test cases has been implemented using JUnit, as well as a thourough testing from the webpage it self.
 
+The code integrates with Travis CI and is published on heroku on the link nameless-beach-37645.herokuapp.com
+
