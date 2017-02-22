@@ -1,32 +1,213 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
-
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
 <ui:composition template="/WEB-INF/templates/template.xhtml">
-    
     <ui:define name="content">
+        <br/>
+        <br/>
         <h:form>
-            <h:panelGrid columns="2">
-                <h:outputText value="Name"></h:outputText>
-                <h:inputText value="#{hotelMngView.destinationName}"></h:inputText>
-                
-            </h:panelGrid>
-            <h:commandButton value="Search" action="#{hotelMngView.search}"></h:commandButton>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="col-md-12 ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Country</label>
+                                <h:inputText id="cityInput" class="form-control" value="#{hotelMngView.destinationName}" validatorMessage="Region Ids, or City names are allowed">
+                                    <f:validateRegex pattern="[a-zA-Z 0-9]*" for="cityInput" /> </h:inputText>
+                                <h:message id="m1" for="cityInput" style="color:red" /> </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" style="width: 150px;">Length of Stay</label>
+                                <h:inputText class="form-control" value="#{hotelMngView.lengthOfStay}" id="lengthInput"
+                                             validatorMessage="Number value >= 1">
+                                <f:validateLongRange minimum="1" for="lengthInput"  />
+                                </h:inputText>
+                                <h:message id="m2" for="lengthInput" style="color:red" /> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-12 ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 200px;">Trip Min Start Date</label>
+                                <h:inputText id="tripMinInput" class="form-control" value="#{hotelMngView.minTripStartDate}"
+                                  validatorMessage="Date pattern YYYY-MM-DD" label="Trip Min Start Date">
+                                    <!-- <f:validateRegex pattern="[a-zA-Z 0-9]*" for="cityInput" /> --> 
+                                    <f:convertDateTime pattern="yyyy-MM-dd" for="tripMinInput"  />
+                                    </h:inputText>
+                                <h:message id="m3" for="tripMinInput" style="color:red" /> </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" style="width: 200px;">Trip Max Start Date</label>
+                                <h:inputText class="form-control" value="#{hotelMngView.maxTripStartDate}" id="tripMaxInput"
+                                             validatorMessage="Date pattern YYYY-MM-DD" label="Trip Max Start Date">
+                               <!--  <f:validateLongRange minimum="1" for="lengthInput"  /> -->
+                                 <f:convertDateTime pattern="yyyy-MM-dd" for="tripMaxInput"  />
+                                </h:inputText>
+                                <h:message id="m4" for="tripMaxInput" style="color:red" /> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-12 ">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Min Star Rating</label>
+                                <h:inputText id="minRankInput" class="form-control" value="#{hotelMngView.minStarRating}" validatorMessage="Allowed values 0.0 to 5.0">
+                                    <f:validateDoubleRange minimum="0.0" maximum="5.0" for="minRankInput" /> </h:inputText>
+                                <h:message id="m5" for="minRankInput" style="color:red" /> </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Max Star Rating</label>
+                                <h:inputText id="maxRankInput" class="form-control" value="#{hotelMngView.maxStarRating}"
+                                             validatorMessage="Allowed values 0.0 to 5.0">
+                                 <f:validateDoubleRange minimum="0.0" maximum="5.0" for="maxRankInput" /> </h:inputText>
+                                 <h:message id="m6" for="maxRankInput" style="color:red" /> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Min Total Rate</label>
+                                <h:inputText id="minTotalRateInput" class="form-control" value="#{hotelMngView.minTotalRate}"
+                                             validatorMessage="Allowed values >= 0.0">
+                                  <f:validateDoubleRange minimum="0.0"  for="minTotalRateInput" /> </h:inputText>
+                                <h:message id="m7" for="minTotalRateInput" style="color:red" /> 
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Max Total Rate</label>
+                                <h:inputText id="maxTotalRateInput" class="form-control" value="#{hotelMngView.maxTotalRate}"
+                                             validatorMessage="Allowed values >= 0.0">
+                                 <f:validateDoubleRange minimum="0.0"  for="maxTotalRateInput" /> </h:inputText>
+                                <h:message id="m8" for="maxTotalRateInput" style="color:red" /> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Min Guest Rating</label>
+                                <h:inputText id="minGuestRateInput" class="form-control" value="#{hotelMngView.minGuestRating}"
+                                              validatorMessage="Allowed values 0.0 to 5.0">
+                                <f:validateDoubleRange minimum="0.0" maximum="5.0" for="minGuestRateInput" /> </h:inputText>
+                                 <h:message id="m9" for="minGuestRateInput" style="color:red" /> 
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label" style="width: 150px;">Max Guest Rating</label>
+                                <h:inputText id="maxGuestRateInput"  class="form-control" value="#{hotelMngView.maxGuestRating}"
+                                              validatorMessage="Allowed values 0.0 to 5.0">
+                                    <f:validateDoubleRange minimum="0.0" maximum="5.0" for="maxGuestRateInput" /> </h:inputText>
+                                 <h:message id="m10" for="minGuestRateInput" style="color:red" /> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 ">
+                        <div class="col-md-6 "> </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group ">
+                                <h:commandButton class="btn btn-default pull-right" value="Search" action="#{hotelMngView.search}"></h:commandButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </h:form>
-        
-        <h:dataTable value="#{hotelMngView.list}" var="hotel">
-        	
-        	
-        	<h:column>
-    				
-    				<f:facet name="header">Name</f:facet>
-    				
-    				#{hotel.name}
-    			</h:column>
-        	
-        </h:dataTable>
+        <br/>
+        <h:panelGroup rendered="#{hotelMngView.list.size() > 0}">
+            <ui:repeat var="hotel" value="#{hotelMngView.list}" varStatus="status" step="1">
+                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12 ">
+                    <div class="well">
+                        <div class="row">
+                        <div class="col-md-12 ">
+                         
+                        <div class="col-md-4 ">
+                        <img src="#{hotel.hotelInfo.hotelImageUrl}" class="img-thumbnail" />
+                        </div>
+                        <div class="col-md-8 ">
+                         #{hotel.hotelInfo.hotelName}
+                            <label class="badge">#{hotel.hotelInfo.hotelStarRating}</label>
+                            <br/> #{hotel.hotelInfo.hotelDestination}
+                            <br/> #{hotel.hotelInfo.travelStartDate} - #{hotel.hotelInfo.travelEndDate}
+                            <br/> Price per night #{hotel.hotelPricingInfo.originalPricePerNight} Total price with Tax#{hotel.hotelPricingInfo.totalPriceValue}
+                            <br/>
+                            <label class="badge"> #{hotel.hotelInfo.promotionDescription} #{hotel.hotelInfo.promotionAmount} </label>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <!-- <div class="row content">
+													<div class="col-md-12 divul"
+														style="padding: 10px; margin: 0pt;">
+														<div class="col-md-10 divlist">
+															<label class="bluetext2">#{post.skill.category.name}
+																- #{post.skill.arabicDesc}</label> <label class="label1">#{post.formatedJobPostDate}</label>
+															<label class="label1">#{post.jobDescription} </label>
+														</div>
+														<div class="col-md-2 divlist">
+
+															<br /> <span class="glyphicon glyphicon-user badge">#{post.numberOfApplicants}</span>
+
+
+
+															<br /> 
+															<h:panelGroup rendered="#{post.notifyRequesterTemp eq 'true'}" >
+															<label class="label1"><span class="badge">
+																	New Applicants</span></label>
+															 </h:panelGroup>
+															<h:panelGroup rendered="#{post.status.toString()  eq 'closed'}" >
+															<label class="label1"><span class="badge">
+																	Job Closed</span></label>
+															 </h:panelGroup>
+																	
+														</div>
+
+													</div>
+
+
+
+												</div> -->
+                <br /> </ui:repeat>
+        </h:panelGroup>
+        <!--  private Double movingAverageScore;
+    @SerializedName("")
+    @Expose
+    private Double promotionAmount;
+    @SerializedName("promotionDescription")
+    @Expose
+    private String promotionDescription;
+    @SerializedName("promotionTag")
+    @Expose
+    private String promotionTag;
+    @SerializedName("rawAppealScore")
+    @Expose
+    private Double rawAppealScore;
+    @SerializedName("relevanceScore")
+    @Expose
+    private Double relevanceScore;
+    @SerializedName("statusCode")
+    @Expose
+    private String statusCode;
+    @SerializedName("statusDescription")
+    @Expose
+    private String statusDescription;
+    @SerializedName("carPackage")
+    @Expose
+    private Boolean carPackage;
+    @SerializedName("allInclusive")
+    @Expose -->
     </ui:define>
-    
 </ui:composition>
+
 </html>

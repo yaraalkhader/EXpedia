@@ -10,15 +10,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.hotel.management.model.Hotel;
+import com.hotel.management.model.Result;
 
 public class HotelMngController {
 
 	private static final String JSON_API = "https://offersvc.expedia.com/offers/v2/getOffers?scenario=deal-finder&page=foo&uid=foo&productType=Hotel";
-	private static final String PARAMETER_DESTINATION_NAME = "hotelDestination";
+	private static final String PARAMETER_DESTINATION_NAME = "destinationCity";
+	private static final String PARAMETER_DESTINATION_REGION = "regionIds";
 	private static final String PARAMETER_MIN_TRIP_START_DATE = "minTripStartDate";
 	private static final String PARAMETER_MAX_TRIP_START_DATE = "maxTripStartDate";
 	private static final String PARAMETER_LENGTH_OF_STAY = "lengthOfStay";
@@ -41,7 +47,11 @@ public class HotelMngController {
 		
 		String urlStr = JSON_API;
 		if (validateNotEmpty(destinationName)){
-			urlStr = urlStr + getParameter(PARAMETER_DESTINATION_NAME, normalize(destinationName.trim()));
+			if (StringUtils.isNumeric(destinationName)) {
+				urlStr = urlStr + getParameter(PARAMETER_DESTINATION_REGION, normalize(destinationName.trim()));
+			} else{
+				urlStr = urlStr + getParameter(PARAMETER_DESTINATION_NAME, normalize(destinationName.trim()));
+			}
 		}
 				
 		if (validateNotEmpty(minTripStartDate)){
@@ -105,23 +115,25 @@ public class HotelMngController {
 
 	public static List<Hotel> jsonHandler(String urlStr) {
 		URL url;
-		List<Hotel> hotelList = new ArrayList<Hotel>();
+		
 		try {
 			url = new URL(urlStr);
 			HttpURLConnection request = (HttpURLConnection) url.openConnection();
 			JsonParser jp = new JsonParser(); 
 			JsonElement root = jp.parse(new InputStreamReader((InputStream) request
 					.getContent())); // Convert the input stream to a json element
-			JsonObject rootobj = root.getAsJsonObject();
-			hotelList.add(new Hotel(rootobj.toString()));
-			System.out.println(rootobj);
+			
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();		
+			Result result = gson.fromJson(root, Result.class);
+			
+			return result.getOffers().getHotel();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		// String zipcode = rootobj.get("zip_code").getAsString();
-		return hotelList;
+		
+		return null;
 	}
 
 	public void parseJson(String rootobj) {
@@ -134,7 +146,8 @@ public class HotelMngController {
 
 	public static void main(String[] args) {
 		
-			HotelMngController.jsonHandler(null);
+			HotelMngController.jsonHandler(JSON_API);
+			
 		
 	}
 

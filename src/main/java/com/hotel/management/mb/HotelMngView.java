@@ -1,17 +1,13 @@
 package com.hotel.management.mb;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.faces.bean.ManagedBean;
 
 import com.hotel.management.datasource.HotelMngController;
 import com.hotel.management.model.Hotel;
 
-
-@ManagedBean(name="hotelMngView", eager=true)
 public class HotelMngView {
-	
 	private String destinationName;
 	private Date minTripStartDate;
 	private Date maxTripStartDate;
@@ -23,11 +19,11 @@ public class HotelMngView {
 	private String minGuestRating;
 	private String maxGuestRating;
 	
-	private Hotel[] list;
-	public Hotel[] getList() {
+	private List<Hotel> list;
+	public List<Hotel> getList() {
 		return list;
 	}
-	public void setList(Hotel[] list) {
+	public void setList(List<Hotel> list) {
 		this.list = list;
 	}
 	private HotelMngController controller;
@@ -39,10 +35,15 @@ public class HotelMngView {
 	public String search() {
 		System.out.println("searching");
 		List<Hotel> hotelsList = controller.searchForHotels(destinationName, minTripStartDate, maxTripStartDate, lengthOfStay, minStarRating, maxStarRating, minTotalRate, maxTotalRate, minGuestRating, maxGuestRating); 
-		list = new Hotel[hotelsList.size()];
-		list = hotelsList.toArray(list);
-		System.out.println("name = " + list[0].getName());
-		System.out.println("size = "   + list.length);
+		if (hotelsList == null || hotelsList.isEmpty()) {
+			list = new ArrayList<Hotel>();
+			
+		} else {
+		list = hotelsList;
+		
+		}
+		//System.out.println("name = " + list[0].getName());
+		System.out.println("size = "   + list.size());
 		return "";
 	}
 	

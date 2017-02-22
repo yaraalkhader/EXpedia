@@ -1,3 +1,15 @@
 com/hotel/management/model/Hotel.class
-com/hotel/management/mb/HotelMngView.class
 com/hotel/management/datasource/HotelMngController.class
+com/hotel/management/model/HotelScores.class
+com/hotel/management/mb/HotelMngView.class
+com/hotel/management/model/Offers.class
+com/hotel/management/model/Result.class
+com/hotel/management/model/UserInfo.class
+com/hotel/management/model/HotelInfo.class
+com/hotel/management/model/Destination.class
+com/hotel/management/model/HotelUrgencyInfo.class
+com/hotel/management/model/HotelUrls.class
+com/hotel/management/model/OfferInfo.class
+com/hotel/management/model/HotelPricingInfo.class
+com/hotel/management/model/Persona.class
+com/hotel/management/model/OfferDateRange.class

@@ -1,3 +1,15 @@
-/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/mb/HotelMngView.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/HotelInfo.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/OfferInfo.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/HotelScores.java
 /Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/datasource/HotelMngController.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/HotelUrgencyInfo.java
 /Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/Hotel.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/UserInfo.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/mb/HotelMngView.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/Result.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/Destination.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/HotelUrls.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/HotelPricingInfo.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/OfferDateRange.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/Offers.java
+/Users/yk/Expedia/yk-hotel-mng/src/main/java/com/hotel/management/model/Persona.java
