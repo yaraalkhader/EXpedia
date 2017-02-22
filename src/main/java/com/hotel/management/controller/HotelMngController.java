@@ -48,7 +48,7 @@ public class HotelMngController {
 
 			public int compare(Hotel o1, Hotel o2) {
 				
-				return o1.getHotelPricingInfo().getPercentSavings().compareTo(o2.getHotelPricingInfo().getPercentSavings()) ;
+				return o2.getHotelPricingInfo().getPercentSavings().compareTo(o1.getHotelPricingInfo().getPercentSavings()) ;
 			}
 			
 		});
