@@ -9,13 +9,22 @@ import com.hotel.management.mb.HotelMngView;
 import com.hotel.management.model.DataService;
 import com.hotel.management.model.Hotel;
 
+
 /**
+ * Controller class that connects between the view model. 
+ *
  * @author yk
- * 
  */
 public class HotelMngController {
 	
+	/**
+	 * The view managed bean
+	 */
 	private HotelMngView view;
+	
+	/**
+	 * The data service from where the hotels is retrieved
+	 */
 	private DataService service;
 	
 	public HotelMngController(HotelMngView view) {
@@ -24,10 +33,13 @@ public class HotelMngController {
 	} 
 	
 	/**
+	 * update view is a visitor method that updates the view list of hotels,
+	 * the method calls the dataservice and retrieves the data by passing
+	 * the view search criteria. 
 	 * 
 	 */
 	public void updateView() {
-		System.out.println("searching");
+		
 		List<Hotel> hotelsList = service.findHotels(view.getDestinationName(), view.getMinTripStartDate(),
 				view.getMaxTripStartDate(), view.getLengthOfStay(), view.getMinStarRating(), view.getMaxStarRating(), view.getMinTotalRate(),
 				view.getMaxTotalRate(), view.getMinGuestRating(), view.getMaxGuestRating()); 
@@ -38,11 +50,17 @@ public class HotelMngController {
 			sortBySaving(hotelsList);
 			view.setList(hotelsList);
 		
-		}
-		System.out.println("size = "   + view.getList().size());
-		
+		}				
 	}
 
+	/**
+	 * Sorts the list of hotels descendingly by the value of the offered 
+	 * promotion 
+	 * 
+	 *
+	 * @param  hotels  list of hotels to be sorted
+	 * 
+	 */
 	private void sortBySaving(List<Hotel> hotels) {
 		Collections.sort(hotels, new Comparator<Hotel>() {
 

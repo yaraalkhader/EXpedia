@@ -143,10 +143,11 @@
                            <i class="glyphicon glyphicon-map-marker"> </i>  #{hotel.hotelInfo.hotelDestination}
                             <br/>
                             <span class="glyphicon glyphicon-calendar"> </span> #{hotel.hotelInfo.travelStartDate} - #{hotel.hotelInfo.travelEndDate}
-                            <br/> Price per night #{hotel.hotelPricingInfo.originalPricePerNight} - Total price with Tax#{hotel.hotelPricingInfo.totalPriceValue}
+                             <br/> Price per night #{hotel.hotelPricingInfo.originalPricePerNight}
                             <h:panelGroup rendered="#{hotel.hotelInfo.promotionDescription ne ''}">
                             <br/>
-                            <label class="badge"> #{hotel.hotelInfo.promotionDescription} </label>
+                            <label class="badge"> #{hotel.hotelInfo.promotionDescription} </label> 
+                             Now Total price #{hotel.hotelPricingInfo.totalPriceValue - hotel.hotelPricingInfo.hotelTotalTaxesAndFees}
                             </h:panelGroup>
                             </div>
                         </div>
