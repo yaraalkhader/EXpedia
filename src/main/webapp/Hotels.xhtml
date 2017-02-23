@@ -9,14 +9,14 @@
                     <div class="col-md-12 ">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">City, Region</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">City, Region</label>
                                 <h:inputText id="cityInput" class="form-control" value="#{hotelMngView.destinationName}" validatorMessage="Region Ids, or City names are allowed">
                                     <f:validateRegex pattern="[a-zA-Z 0-9]*" for="cityInput" /> </h:inputText>
                                 <h:message id="m1" for="cityInput" style="color:red" /> </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label  class="col-sm-2 control-label" style="width: 150px;">Length of Stay</label>
+                                <label  class="col-sm-2 control-label" style="width: 200px;">Length of Stay</label>
                                 <h:inputText class="form-control" value="#{hotelMngView.lengthOfStay}" id="lengthInput"
                                              validatorMessage="Number value >= 1">
                                 <f:validateLongRange minimum="1" for="lengthInput"  />
@@ -31,7 +31,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label" style="width: 200px;">Trip Min Start Date</label>
-                                <h:inputText id="tripMinInput" class="form-control" value="#{hotelMngView.minTripStartDate}"
+                                <h:inputText placeholder="yyyy-mm-dd" id="tripMinInput" class="form-control" value="#{hotelMngView.minTripStartDate}"
                                   validatorMessage="Date pattern YYYY-MM-DD" label="Trip Min Start Date">
                                     <!-- <f:validateRegex pattern="[a-zA-Z 0-9]*" for="cityInput" /> --> 
                                     <f:convertDateTime pattern="yyyy-MM-dd" for="tripMinInput"  />
@@ -41,7 +41,7 @@
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <label  class="col-sm-2 control-label" style="width: 200px;">Trip Max Start Date</label>
-                                <h:inputText class="form-control" value="#{hotelMngView.maxTripStartDate}" id="tripMaxInput"
+                                <h:inputText placeholder="yyyy-mm-dd" class="form-control" value="#{hotelMngView.maxTripStartDate}" id="tripMaxInput"
                                              validatorMessage="Date pattern YYYY-MM-DD" label="Trip Max Start Date">
                                <!--  <f:validateLongRange minimum="1" for="lengthInput"  /> -->
                                  <f:convertDateTime pattern="yyyy-MM-dd" for="tripMaxInput"  />
@@ -55,14 +55,14 @@
                     <div class="col-md-12 ">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Min Star Rating</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Min Star Rating</label>
                                 <h:inputText id="minRankInput" class="form-control" value="#{hotelMngView.minStarRating}" validatorMessage="Allowed values 0.0 to 5.0">
                                     <f:validateDoubleRange minimum="0.0" maximum="5.0" for="minRankInput" /> </h:inputText>
                                 <h:message id="m5" for="minRankInput" style="color:red" /> </div>
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Max Star Rating</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Max Star Rating</label>
                                 <h:inputText id="maxRankInput" class="form-control" value="#{hotelMngView.maxStarRating}"
                                              validatorMessage="Allowed values 0.0 to 5.0">
                                  <f:validateDoubleRange minimum="0.0" maximum="5.0" for="maxRankInput" /> </h:inputText>
@@ -73,7 +73,7 @@
                     <div class="col-md-12 ">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Min Total Rate</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Min Total Rate</label>
                                 <h:inputText id="minTotalRateInput" class="form-control" value="#{hotelMngView.minTotalRate}"
                                              validatorMessage="Allowed values >= 1">
                                    <f:validateLongRange minimum="1" for="minTotalRateInput"  />
@@ -83,7 +83,7 @@
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Max Total Rate</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Max Total Rate</label>
                                 <h:inputText id="maxTotalRateInput" class="form-control" value="#{hotelMngView.maxTotalRate}"
                                              validatorMessage="Allowed values >= 1">
                                    <f:validateLongRange minimum="1" for="minTotalRateInput"  /> </h:inputText>
@@ -94,7 +94,7 @@
                     <div class="col-md-12 ">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Min Guest Rating</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Min Guest Rating</label>
                                 <h:inputText id="minGuestRateInput" class="form-control" value="#{hotelMngView.minGuestRating}"
                                               validatorMessage="Allowed values 0.0 to 5.0">
                                 <f:validateDoubleRange minimum="0.0" maximum="5.0" for="minGuestRateInput" /> </h:inputText>
@@ -103,7 +103,7 @@
                         </div>
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <label class="col-sm-2 control-label" style="width: 150px;">Max Guest Rating</label>
+                                <label class="col-sm-2 control-label" style="width: 200px;">Max Guest Rating</label>
                                 <h:inputText id="maxGuestRateInput"  class="form-control" value="#{hotelMngView.maxGuestRating}"
                                               validatorMessage="Allowed values 0.0 to 5.0">
                                     <f:validateDoubleRange minimum="0.0" maximum="5.0" for="maxGuestRateInput" /> </h:inputText>
